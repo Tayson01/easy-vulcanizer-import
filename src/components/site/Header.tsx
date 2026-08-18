@@ -3,14 +3,16 @@ import { useEffect, useState } from "react";
 import { CircleDot, Phone, Menu, X } from "lucide-react";
 
 import { PHONE, TEL } from "@/lib/site-data";
+import { ThemeToggle } from "@/components/site/ThemeToggle";
 
 const nav = [
-  { to: "/", label: "Acasă" },
-  { to: "/servicii", label: "Servicii" },
-  { to: "/zone", label: "Zone deservite" },
-  { to: "/intrebari-frecvente", label: "Întrebări" },
-  { to: "/contact", label: "Contact" },
+  { to: "/", label: "🏠 Acasă" },
+  { to: "/servicii", label: "🛠️ Servicii" },
+  { to: "/zone", label: "📍 Zone deservite" },
+  { to: "/intrebari-frecvente", label: "❓ Întrebări" },
+  { to: "/contact", label: "✉️ Contact" },
 ];
+
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
