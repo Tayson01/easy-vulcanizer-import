@@ -2,17 +2,16 @@ import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { CircleDot, Phone, Menu, X } from "lucide-react";
 
-import { PHONE, TEL } from "@/lib/site-data";
 import { ThemeToggle } from "@/components/site/ThemeToggle";
+import { PHONE, TEL } from "@/lib/site-data";
 
 const nav = [
-  { to: "/", label: "🏠 Acasă" },
-  { to: "/servicii", label: "🛠️ Servicii" },
-  { to: "/zone", label: "📍 Zone deservite" },
-  { to: "/intrebari-frecvente", label: "❓ Întrebări" },
-  { to: "/contact", label: "✉️ Contact" },
+  { to: "/", label: "Acasă" },
+  { to: "/servicii", label: "Servicii" },
+  { to: "/zone", label: "Zone deservite" },
+  { to: "/intrebari-frecvente", label: "Întrebări" },
+  { to: "/contact", label: "Contact" },
 ];
-
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -58,8 +57,8 @@ export function Header() {
 
         <div className="flex items-center gap-2">
           <ThemeToggle />
-          <a
 
+          <a
             href={`tel:${TEL}`}
             className="inline-flex items-center justify-center gap-2 rounded-xl bg-brand px-4 py-2.5 text-sm font-semibold text-brand-foreground shadow-card transition-all hover:brightness-110"
           >
