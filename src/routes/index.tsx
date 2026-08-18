@@ -10,6 +10,11 @@ import {
   Star,
 } from "lucide-react";
 
+import heroImg from "@/assets/hero-duba.jpg";
+import ziImg from "@/assets/interventie-zi.jpg";
+import noapteImg from "@/assets/interventie-noapte.jpg";
+import camionImg from "@/assets/camion.jpg";
+
 import { Btn, BtnLink, SectionLabel } from "@/components/site/ui";
 import { ServiceIcon } from "@/components/site/ServiceIcon";
 import { CoverageMapSection } from "@/components/site/CoverageMapSection";
@@ -33,17 +38,17 @@ export const Route = createFileRoute("/")({
   component: Index,
   head: () => ({
     meta: [
-      { title: "Vulcanizare Mobilă Constanța 24/7 · Demo" },
+      { title: "Lovable App" },
       {
         name: "description",
         content:
-          "Site demo pentru vulcanizare mobilă în Constanța: intervenții 24/7, reparații pe loc, zone deservite și tarife orientative.",
+          "A",
       },
-      { property: "og:title", content: "Vulcanizare Mobilă Constanța 24/7 · Demo" },
+      { property: "og:title", content: "Lovable App" },
       {
         property: "og:description",
         content:
-          "Site demo pentru vulcanizare mobilă în Constanța: intervenții 24/7, reparații pe loc și zone deservite.",
+          "A",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -75,22 +80,26 @@ export const Route = createFileRoute("/")({
 
 const gallery = [
   {
-    emoji: "🛣️",
+    src: ziImg,
+    alt: "Reparație de pană auto pe marginea drumului în Constanța",
     title: "Intervenție pe traseu",
     desc: "Reparație rapidă direct pe marginea drumului, fără platformă.",
   },
   {
-    emoji: "🌙",
+    src: noapteImg,
+    alt: "Intervenție de vulcanizare mobilă noaptea într-o parcare din Constanța",
     title: "Intervenție nocturnă",
     desc: "Schimb de roată seara, direct lângă mașina clientului.",
   },
   {
-    emoji: "🚛",
+    src: camionImg,
+    alt: "Schimb de anvelopă la un camion pe autostradă",
     title: "Camioane și flote",
     desc: "Echipament profesional pentru TIR-uri și autoutilitare.",
   },
   {
-    emoji: "🚐",
+    src: heroImg,
+    alt: "Duba de vulcanizare mobilă noaptea pe stradă în Constanța",
     title: "Duba de intervenție",
     desc: "Autospeciala noastră, pregătită pentru ieșiri rapide 24/7.",
   },
@@ -107,7 +116,7 @@ function Index() {
           <div>
             <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1.5 text-xs font-semibold text-muted-foreground">
               <span className="size-2 rounded-full bg-brand" />
-              ⚡ Disponibili 24/7 în Constanța și împrejurimi
+              Disponibili 24/7 în Constanța și împrejurimi
             </span>
             <h1 className="mt-6 text-5xl font-extrabold leading-[1.05] tracking-tight md:text-6xl">
               Vulcanizare mobilă în <span className="text-brand">Constanța</span>, oriunde te afli.
@@ -126,33 +135,31 @@ function Index() {
             </div>
             <div className="mt-9 flex flex-wrap gap-x-8 gap-y-3 text-sm font-medium text-muted-foreground">
               <span className="inline-flex items-center gap-2">
-                <Clock className="size-4 text-brand" /> Răspuns sub 20 min ⏱️
+                <Clock className="size-4 text-brand" /> Răspuns sub 20 min
               </span>
               <span className="inline-flex items-center gap-2">
                 <MapPin className="size-4 text-brand" /> Constanța & 40 km
               </span>
               <span className="inline-flex items-center gap-2">
-                <ShieldCheck className="size-4 text-brand" /> Garanție lucrare 🛡️
+                <ShieldCheck className="size-4 text-brand" /> Garanție lucrare
               </span>
             </div>
           </div>
 
           <div className="relative">
-            <div className="flex flex-col items-center justify-center gap-4 rounded-3xl border border-border bg-surface px-8 py-16 text-center shadow-float">
-              <span className="text-7xl" aria-hidden="true">
-                🚐🛞
-              </span>
-              <p className="text-xl font-extrabold">Atelierul vine la tine</p>
-              <p className="max-w-xs text-sm text-muted-foreground">
-                Echipă mobilă, scule profesionale și piese pe teren — 24 de ore din 24. 🧰⚡
-              </p>
-            </div>
+            <img
+              src={heroImg}
+              alt="Duba de vulcanizare mobilă în timpul unei intervenții de noapte în Constanța"
+              width={1200}
+              height={900}
+              className="w-full rounded-3xl object-cover shadow-float"
+            />
             <div className="absolute -top-4 right-4 inline-flex items-center gap-2 rounded-xl bg-card px-3 py-2 text-xs font-semibold shadow-card">
-              <span className="size-2 rounded-full bg-success" /> 🟢 Online acum
+              <span className="size-2 rounded-full bg-success" /> Online acum
             </div>
             <div className="absolute -bottom-6 -left-4 rounded-2xl bg-card px-5 py-4 shadow-float">
               <p className="text-2xl font-extrabold">2.000+</p>
-              <p className="text-xs text-muted-foreground">🏆 intervenții reușite</p>
+              <p className="text-xs text-muted-foreground">intervenții reușite</p>
             </div>
           </div>
         </div>
@@ -163,7 +170,7 @@ function Index() {
         <div className="mx-auto max-w-6xl px-5 py-10">
           <div className="flex flex-wrap items-center justify-between gap-5">
             <div>
-              <p className="text-base font-bold">Ai pană acum? 🛞</p>
+              <p className="text-base font-bold">Ai pană acum?</p>
               <p className="text-sm text-muted-foreground">
                 Răspundem 24/7. Trimite locația pe WhatsApp și pornim spre tine.
               </p>
@@ -198,9 +205,9 @@ function Index() {
 
       {/* Servicii */}
       <section id="servicii" className="mx-auto max-w-6xl px-5 py-20">
-        <SectionLabel>🛠️ Servicii</SectionLabel>
+        <SectionLabel>Servicii</SectionLabel>
         <h2 className="mt-3 max-w-xl text-4xl font-extrabold tracking-tight">
-          Tot ce ai nevoie, într-un singur loc. ✅
+          Tot ce ai nevoie, într-un singur loc.
         </h2>
         <p className="mt-4 max-w-2xl text-muted-foreground">
           De la pene neașteptate pe drum până la întreținere programată — echipa noastră mobilă din Constanța
@@ -230,7 +237,7 @@ function Index() {
         </div>
         <div className="mt-8 flex flex-wrap items-center justify-between gap-4 rounded-3xl bg-brand p-7 text-brand-foreground">
           <div>
-            <p className="text-lg font-bold">Nu găsești ce cauți? 🤔</p>
+            <p className="text-lg font-bold">Nu găsești ce cauți?</p>
             <p className="text-sm opacity-90">
               Sună-ne și îți oferim o soluție personalizată în câteva minute.
             </p>
@@ -258,22 +265,24 @@ function Index() {
 
       {/* Galerie */}
       <section id="galerie" className="mx-auto max-w-6xl px-5 py-20">
-        <SectionLabel>Galerie demo · Exemple de intervenții</SectionLabel>
+        <SectionLabel>Galerie · Intervenții reale</SectionLabel>
         <h2 className="mt-3 max-w-xl text-4xl font-extrabold tracking-tight">
-          Exemple de intervenții 🧰
+          Poze reale din intervențiile noastre.
         </h2>
         <p className="mt-4 max-w-2xl text-muted-foreground">
-          Acesta este un site demo: în loc de fotografii afișăm exemple ilustrate ale lucrărilor pe care le facem.
+          Imagini din teren, cu duba noastră și lucrări făcute direct la client, pe autostradă sau în oraș.
         </p>
         <div className="mt-10 grid gap-5 sm:grid-cols-2">
           {gallery.map((g) => (
-            <figure
-              key={g.title}
-              className="overflow-hidden rounded-3xl border border-border bg-card transition-all hover:-translate-y-1 hover:shadow-card"
-            >
-              <div className="flex h-40 items-center justify-center bg-brand-soft text-6xl" aria-hidden="true">
-                {g.emoji}
-              </div>
+            <figure key={g.title} className="overflow-hidden rounded-3xl border border-border bg-card">
+              <img
+                src={g.src}
+                alt={g.alt}
+                loading="lazy"
+                width={1000}
+                height={750}
+                className="h-60 w-full object-cover"
+              />
               <figcaption className="p-5">
                 <p className="font-bold">{g.title}</p>
                 <p className="mt-1 text-sm text-muted-foreground">{g.desc}</p>
@@ -290,7 +299,7 @@ function Index() {
 
       {/* Zone */}
       <section id="zone" className="mx-auto max-w-6xl px-5 py-20">
-        <SectionLabel>📍 Zone deservite</SectionLabel>
+        <SectionLabel>Zone deservite</SectionLabel>
         <h2 className="mt-3 max-w-xl text-4xl font-extrabold tracking-tight">
           Acoperim Constanța și împrejurimile.
         </h2>
@@ -330,9 +339,9 @@ function Index() {
       {/* Recenzii */}
       <section id="recenzii" className="border-y border-border bg-surface">
         <div className="mx-auto max-w-6xl px-5 py-20">
-          <SectionLabel>⭐ Recenzii Google verificate</SectionLabel>
+          <SectionLabel>Recenzii Google verificate</SectionLabel>
           <h2 className="mt-3 max-w-xl text-4xl font-extrabold tracking-tight">
-            Șoferii din Constanța ne recomandă. 🚗💬
+            Șoferii din Constanța ne recomandă.
           </h2>
           <div className="mt-6 flex items-center gap-3">
             <p className="text-3xl font-extrabold">4.9</p>
@@ -373,7 +382,7 @@ function Index() {
 
       {/* FAQ */}
       <section id="intrebari" className="mx-auto max-w-3xl px-5 py-20">
-        <SectionLabel>❓ Întrebări frecvente</SectionLabel>
+        <SectionLabel>Întrebări frecvente</SectionLabel>
         <h2 className="mt-3 text-4xl font-extrabold tracking-tight">
           Tot ce vrei să știi înainte să suni.
         </h2>
@@ -406,8 +415,8 @@ function Index() {
       {/* Contact */}
       <section id="contact" className="border-t border-border bg-surface">
         <div className="mx-auto max-w-6xl px-5 py-20">
-          <SectionLabel>✉️ Contact</SectionLabel>
-          <h2 className="mt-3 text-4xl font-extrabold tracking-tight">Hai să vorbim. 👋</h2>
+          <SectionLabel>Contact</SectionLabel>
+          <h2 className="mt-3 text-4xl font-extrabold tracking-tight">Hai să vorbim.</h2>
           <p className="mt-4 max-w-2xl text-muted-foreground">
             Sună-ne pentru intervenții urgente sau trimite-ne mesajul direct pe WhatsApp — opțional cu locația
             ta exactă.
