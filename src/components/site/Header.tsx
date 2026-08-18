@@ -57,7 +57,9 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-2">
+          <ThemeToggle />
           <a
+
             href={`tel:${TEL}`}
             className="inline-flex items-center justify-center gap-2 rounded-xl bg-brand px-4 py-2.5 text-sm font-semibold text-brand-foreground shadow-card transition-all hover:brightness-110"
           >
