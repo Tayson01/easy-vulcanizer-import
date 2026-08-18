@@ -17,6 +17,7 @@ import camionImg from "@/assets/camion.jpg";
 
 import { Btn, BtnLink, SectionLabel } from "@/components/site/ui";
 import { ServiceIcon } from "@/components/site/ServiceIcon";
+import { GoogleMark } from "@/components/site/GoogleMark";
 import { CoverageMapSection } from "@/components/site/CoverageMapSection";
 import { ContactForm } from "@/components/site/ContactForm";
 import {
@@ -337,48 +338,114 @@ function Index() {
       </section>
 
       {/* Recenzii */}
-      <section id="recenzii" className="border-y border-border bg-surface">
-        <div className="mx-auto max-w-6xl px-5 py-20">
+      <section id="recenzii" className="relative overflow-hidden border-y border-border bg-surface">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -top-32 left-1/2 size-[520px] -translate-x-1/2 rounded-full bg-brand/10 blur-3xl"
+        />
+        <div className="relative mx-auto max-w-6xl px-5 py-20">
           <SectionLabel>Recenzii Google verificate</SectionLabel>
           <h2 className="mt-3 max-w-xl text-4xl font-extrabold tracking-tight">
             Șoferii din Constanța ne recomandă.
           </h2>
-          <div className="mt-6 flex items-center gap-3">
-            <p className="text-3xl font-extrabold">4.9</p>
-            <div>
-              <div className="flex gap-0.5 text-brand">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} className="size-4 fill-current" />
+
+          <div className="mt-10 grid gap-5 lg:grid-cols-[320px_1fr]">
+            {/* Panou scor */}
+            <div className="rounded-3xl border border-border bg-card p-7 shadow-card">
+              <div className="flex items-center gap-2 text-xs font-semibold text-muted-foreground">
+                <GoogleMark />
+                Recenzii Google
+                <span className="ml-auto inline-flex items-center gap-1 rounded-full bg-brand-soft px-2 py-1 text-[10px] font-bold text-brand">
+                  <ShieldCheck className="size-3" /> Verificat
+                </span>
+              </div>
+
+              <div className="mt-5 flex items-end gap-3">
+                <p className="text-6xl font-extrabold leading-none tracking-tight">4.9</p>
+                <div className="pb-1">
+                  <div className="flex gap-0.5 text-brand">
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <Star key={i} className="size-4 fill-current" />
+                    ))}
+                  </div>
+                  <p className="mt-1 text-xs text-muted-foreground">120+ recenzii</p>
+                </div>
+              </div>
+
+              <div className="mt-6 space-y-2">
+                {[
+                  { stars: 5, pct: 94 },
+                  { stars: 4, pct: 5 },
+                  { stars: 3, pct: 1 },
+                  { stars: 2, pct: 0 },
+                  { stars: 1, pct: 0 },
+                ].map((row) => (
+                  <div key={row.stars} className="flex items-center gap-2 text-xs text-muted-foreground">
+                    <span className="w-3 font-semibold text-foreground">{row.stars}</span>
+                    <Star className="size-3 fill-current text-brand" />
+                    <span className="h-1.5 flex-1 overflow-hidden rounded-full bg-brand-soft">
+                      <span
+                        className="block h-full rounded-full bg-brand transition-all"
+                        style={{ width: `${row.pct}%` }}
+                      />
+                    </span>
+                    <span className="w-8 text-right tabular-nums">{row.pct}%</span>
+                  </div>
                 ))}
               </div>
-              <p className="text-xs text-muted-foreground">Bazat pe recenzii Google</p>
+
+              <div className="mt-7 flex flex-col gap-2">
+                <Btn href={REVIEWS}>Vezi toate recenziile</Btn>
+                <Btn href={REVIEWS} variant="ghost">
+                  Lasă o recenzie
+                </Btn>
+              </div>
             </div>
-          </div>
-          <div className="mt-10 grid gap-5 sm:grid-cols-2">
-            {reviews.map((r) => (
-              <blockquote key={r.name} className="rounded-3xl border border-border bg-card p-6">
-                <div className="flex items-center gap-3">
-                  <span className="flex size-10 items-center justify-center rounded-full bg-brand-soft text-sm font-bold text-brand">
-                    {r.initials}
+
+            {/* Carduri recenzii */}
+            <div className="grid gap-5 sm:grid-cols-2">
+              {reviews.map((r) => (
+                <blockquote
+                  key={r.name}
+                  className="group relative flex flex-col overflow-hidden rounded-3xl border border-border bg-card p-6 shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-brand/40"
+                >
+                  <span
+                    aria-hidden
+                    className="pointer-events-none absolute -right-2 -top-4 text-7xl font-black text-brand/10 transition-colors group-hover:text-brand/20"
+                  >
+                    &rdquo;
                   </span>
-                  <div>
-                    <p className="text-sm font-bold">{r.name}</p>
-                    <p className="text-xs text-muted-foreground">{r.when}</p>
+                  <div className="flex items-center gap-3">
+                    <span className="flex size-11 items-center justify-center rounded-full bg-brand-soft text-sm font-bold text-brand ring-2 ring-brand/15">
+                      {r.initials}
+                    </span>
+                    <div className="min-w-0">
+                      <p className="flex items-center gap-1.5 text-sm font-bold">
+                        {r.name}
+                        <ShieldCheck className="size-3.5 shrink-0 text-brand" />
+                      </p>
+                      <p className="text-xs text-muted-foreground">{r.when}</p>
+                    </div>
+                    <span className="ml-auto shrink-0">
+                      <GoogleMark />
+                    </span>
                   </div>
-                </div>
-                <p className="mt-4 text-sm leading-relaxed text-muted-foreground">„{r.text}”</p>
-                <p className="mt-3 text-xs text-muted-foreground">Postat pe Google</p>
-              </blockquote>
-            ))}
-          </div>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Btn href={REVIEWS}>Vezi toate recenziile pe Google</Btn>
-            <Btn href={REVIEWS} variant="ghost">
-              Lasă o recenzie
-            </Btn>
+                  <div className="mt-4 flex gap-0.5 text-brand">
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <Star key={i} className="size-3.5 fill-current" />
+                    ))}
+                  </div>
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">„{r.text}”</p>
+                  <p className="mt-4 border-t border-border pt-3 text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
+                    Recenzie Google verificată
+                  </p>
+                </blockquote>
+              ))}
+            </div>
           </div>
         </div>
       </section>
+
 
       {/* FAQ */}
       <section id="intrebari" className="mx-auto max-w-3xl px-5 py-20">
