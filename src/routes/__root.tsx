@@ -13,6 +13,9 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
+import { TopBar } from "@/components/site/TopBar";
+import { BackToTop } from "@/components/site/BackToTop";
+import { themeInitScript } from "@/components/site/ThemeToggle";
 
 function NotFoundComponent() {
   return (
@@ -112,6 +115,7 @@ function RootShell({ children }: { children: ReactNode }) {
     <html lang="ro">
       <head>
         <HeadContent />
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>
       <body className="bg-background font-sans text-foreground antialiased">
         {children}
@@ -127,12 +131,14 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <div className="flex min-h-screen flex-col">
+        <TopBar />
         <Header />
         {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
         <div className="flex-1">
           <Outlet />
         </div>
         <Footer />
+        <BackToTop />
       </div>
     </QueryClientProvider>
   );
